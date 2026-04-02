@@ -1,6 +1,6 @@
 tensorflow==2.12.0
 flask
-numpy
+numpy==1.23.5
 pillow
 opencv-python-headless
 matplotlib
