@@ -9,6 +9,12 @@ app.register_blueprint(routes)
 @app.route("/")
 def home():
     return render_template("index.html")
-    
+
+# DO NOT use app.run() when using Gunicorn
+# Gunicorn will directly import and run the 'app' object
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get('PORT', 10000)))
+    # This only runs if you execute: python main.py
+    # Gunicorn does NOT execute this
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host="0.0.0.0", port=port, debug=False)
